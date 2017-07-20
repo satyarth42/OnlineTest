@@ -1,0 +1,26 @@
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="/javascripts/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="/javascripts/socket.io.js"></script>
+    <script type="text/javascript">
+        var socket = io();
+        function start() {
+            $('input').attr('value','Stop');
+            $('input').attr('onclick','stop()');
+            socket.emit('start_test');
+        };
+        function stop(){
+            socket.emit('stop_test');
+        };
+
+    </script>
+</head>
+<body>
+<div align="center">
+    <div>
+        <input type="button" value="Start" onclick="start()">
+    </div>
+</div>
+</body>
+</html>

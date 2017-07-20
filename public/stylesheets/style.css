@@ -1,0 +1,15 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+.main{
+  display: block;
+}
+
+.ques{
+  max-height: 500px;
+  overflow-y: auto;
+  overflow-scrolling: auto;
+  display: block;
+}

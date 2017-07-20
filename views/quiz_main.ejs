@@ -1,0 +1,129 @@
+<html>
+    <head>
+        <title><%= title %></title>
+        <link rel='stylesheet' href='/stylesheets/style.css' />
+        <link rel="stylesheet" href="/stylesheets/bootstrap.min.css" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script type="text/javascript" src="/javascripts/jquery-1.10.2.min.js"></script>
+        <script type="text/javascript" src="/javascripts/socket.io.js"></script>
+        <script type="text/javascript">
+            var socket = io();
+            function mark(x) {
+                var str = "#btn"+x;
+                $(str).removeClass('btn-default');
+                $(str).addClass('btn-danger');
+                var str2 = '#marker'+x;
+                $(str2).attr('onclick',"unmark('"+x+"')");
+                $(str2).html('Unmark');
+            }
+            function unmark(x) {
+                var str = "#btn"+x;
+                $(str).removeClass('btn-danger');
+                $(str).addClass('btn-default');
+                var str2 = '#marker'+x;
+                $(str2).attr('onclick',"mark('"+x+"')");
+                $(str2).html('Mark');
+            }
+            function clr(x){
+                for(var i=01;i<=4;i++){
+                    var str="#"+x+i;
+                    $(str).attr("checked",false);
+                }
+            }
+            function submit_ans() {
+                var opt =[]
+                opt[0]=$("input[type='radio'][name='q1']:checked").val();
+                opt[1]=$("input[type='radio'][name='q2']:checked").val();
+                opt[2]=$("input[type='radio'][name='q3']:checked").val();
+                opt[3]=$("input[type='radio'][name='q4']:checked").val();
+                opt[4]=$("input[type='radio'][name='q5']:checked").val();
+                opt[5]=$("input[type='radio'][name='q6']:checked").val();
+                opt[6]=$("input[type='radio'][name='q7']:checked").val();
+                opt[7]=$("input[type='radio'][name='q8']:checked").val();
+                opt[8]=$("input[type='radio'][name='q9']:checked").val();
+                opt[9]=$("input[type='radio'][name='q10']:checked").val();
+                opt[10]=$("input[type='radio'][name='q11']:checked").val();
+                opt[11]=$("input[type='radio'][name='q12']:checked").val();
+                opt[12]=$("input[type='radio'][name='q13']:checked").val();
+                opt[13]=$("input[type='radio'][name='q14']:checked").val();
+                opt[14]=$("input[type='radio'][name='q15']:checked").val();
+                console.log(opt);
+                socket.emit('submission',{user:{uname:'<%=session.uname%>',roll:'<%=session.roll%>',mail:'<%=session.mail%>',contact:'<%=session.contact%>'},answers:opt});
+            }
+        </script>
+    </head>
+<body>
+<div class="container-fluid" style="max-width: 960px;">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">Brand</a>
+                </div>
+
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#"><%=session.uname%></a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <div class="btn-toolbar col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding-bottom: 40px;">
+        <div class="btn-group-justified col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <% for(var i=1;i<=15;i++){%>
+            <a href="#q<%=i%>" class="btn btn-default" id="btnq<%=i%>"><%=i%></a>
+            <%}%>
+        </div>
+    </div><br>
+    <div class="main">
+        <div id="left-sidebar" class="col-md-4 col-sm-4 col-xs-12 col-lg-3" style="float: left; padding-bottom: 40px;">
+            <div id="clock" class="label label-success" style="font-size: 35px"></div>
+            <div style="padding-top: 30px"><button id="submit" class="btn btn-primary" style="font-size: 20px" onclick="submit_ans()">Submit</button> </div>
+        </div>
+        <div id="ques" class="ques col-md-8 col-sm-8 col-xs-12 col-lg-9" style="float: right">
+            <%for (i in questions){%>
+                <a name="<%=i%>"></a>
+            <div class="panel panel-default">
+                <div class="panel-heading"><%=questions[i.toString()].ques%></div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        <div class="col-lg-10">
+                            <div class="radio">
+                                <%for(var j=0;j<4;j++){%>
+                                <label>
+                                    <input type="radio" name="<%=i%>" id="<%=i%><%=j+1%>" value="<%=j%>">
+                                    <%=questions[i.toString()].options[j]%></label><br>
+                                <%}%>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-footer" align="right">
+                    <div class="btn-group">
+                        <button class="btn btn-primary" onclick="clr('<%=i%>')">Clear</button>
+                        <button class="btn btn-danger" id="marker<%=i%>" onclick="mark('<%=i%>')">Mark</button>
+                    </div>
+                </div>
+            </div>
+            <%}%>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    console.log('<%=session.contact%>');
+    (function myLoop (i) {
+        setTimeout(function () {
+            $('#clock').html(Math.floor(i/60)+":"+(i%60));
+            if(i<=300 && i>120)
+                $('#clock').addClass('label-info');
+            else if(i<=120)
+                $('#clock').addClass('label-danger');
+            if(i>0){
+                myLoop(--i);
+            }
+        },1000)
+    })(900);
+</script>
+</body>
+</html>

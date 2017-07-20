@@ -1,0 +1,28 @@
+<html>
+<head>
+    <link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="/javascripts/socket.io.js"></script>
+    <script type="text/javascript" src="/javascripts/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript">
+        var socket = io()
+        var str = "<a href='questions'><button value='Start Quiz'' class='btn btn-primary'>Proceed to Quiz</button></a>";
+        socket.on('startTest',function () {
+            $('#main').html(str);
+        });
+    </script>
+</head>
+<body>
+<script type="text/javascript">
+
+</script>
+<div align="center" id="main">
+    <div class="progress progress-striped active" style="width: 60%">
+        <marquee direction="right" scrollamount="15" behavior="alternate">
+            <div class="progress-bar progress-bar-success" style="width: 50%"></div>
+        </marquee>
+    </div>
+</div>
+</body>
+</html>
