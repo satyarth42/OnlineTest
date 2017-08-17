@@ -8,6 +8,9 @@
         <script type="text/javascript" src="/javascripts/socket.io.js"></script>
         <script type="text/javascript">
             var socket = io();
+            socket.on("stop_test",function(){
+                submit_ans();
+            });
             function mark(x) {
                 var str = "#btn"+x;
                 $(str).removeClass('btn-default');
@@ -49,6 +52,7 @@
                 opt[14]=$("input[type='radio'][name='q15']:checked").val();
                 console.log(opt);
                 socket.emit('submission',{user:{uname:'<%=session.uname%>',roll:'<%=session.roll%>',mail:'<%=session.mail%>',contact:'<%=session.contact%>'},answers:opt});
+                window.location.href = "logout";
             }
         </script>
     </head>
@@ -72,7 +76,7 @@
     <div class="btn-toolbar col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding-bottom: 40px;">
         <div class="btn-group-justified col-xs-12 col-sm-12 col-md-12 col-lg-12">
             <% for(var i=1;i<=15;i++){%>
-            <a href="#q<%=i%>" class="btn btn-default" id="btnq<%=i%>"><%=i%></a>
+            <a href="#aq<%=i%>" class="btn btn-default" id="btnq<%=i%>"><%=i%></a>
             <%}%>
         </div>
     </div><br>
@@ -83,7 +87,7 @@
         </div>
         <div id="ques" class="ques col-md-8 col-sm-8 col-xs-12 col-lg-9" style="float: right">
             <%for (i in questions){%>
-                <a name="<%=i%>"></a>
+                <a name="a<%=i%>"></a>
             <div class="panel panel-default">
                 <div class="panel-heading"><%=questions[i.toString()].ques%></div>
                 <div class="panel-body">

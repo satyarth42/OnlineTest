@@ -63,8 +63,8 @@ io.on('connection',function(socket){
       socket.broadcast.emit('stop_test');
   });
   socket.on('submission',function (data) {
-    console.log(data);
       if(data.user){
+          
           var candidate = new userdata({
               "name":data.user.uname,
               "roll":data.user.roll,
