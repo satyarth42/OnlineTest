@@ -1,13 +1,25 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
     <script type="text/javascript" src="/javascripts/jquery-1.10.2.min.js"></script>
     <script type="text/javascript" src="/javascripts/socket.io.js"></script>
     <script type="text/javascript">
         var socket = io();
+        $(document).ready(function(){
+            socket.emit('admin_connected');
+        });
+        socket.on('user_connection',function(data){
+            var row="<tr id="+data.roll+">"+"<td>"+data.uname+"<td>"+data.roll+"<td>"+data.mail+"<td>"+data.contact+"</tr>"
+            $('#users').append(row);
+        });
+        socket.on('user_disconnection',function (data) {
+            var id = "#"+data.roll;
+            console.log(id);
+            $(id).remove();
+
+        });
         function start() {
-            $('input').attr('value','Stop');
-            $('input').attr('onclick','stop()');
             socket.emit('start_test');
         };
         function stop(){
@@ -17,9 +29,17 @@
     </script>
 </head>
 <body>
-<div align="center">
-    <div>
-        <input type="button" value="Start" onclick="start()">
+<div class="container">
+    <div align="center">
+        <div>
+            <input type="button" value="Start" onclick="start()">
+            <input type="button" value="Stop" onclick="stop()">
+        </div>
+    </div>
+    <div id="table">
+        <table class="table table-responsive" id="users">
+            <tr><th>Name</th><th>Roll No.</th><th>Email</th><th>Contact</th></tr>
+        </table>
     </div>
 </div>
 </body>

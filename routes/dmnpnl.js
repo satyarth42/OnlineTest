@@ -14,7 +14,6 @@ router.post('/login',function (req, res, next) {
         .digest('hex');
     if(hash==='30df25a5f3ca4239b7c594b3d893d8952d0fc41f55bdd76e768a8c5269f9c88d')
     {
-        console.log("success "+hash);
         res.redirect('control_panel');
     }
     else

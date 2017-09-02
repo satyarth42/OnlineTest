@@ -11,6 +11,9 @@
             socket.on("stop_test",function(){
                 submit_ans();
             });
+            $(document).ready(function(){
+                socket.emit('user_connected',{uname:'<%=session.uname%>',roll:'<%=session.roll%>',mail:'<%=session.mail%>',contact:'<%=session.contact%>'});
+            });
             function mark(x) {
                 var str = "#btn"+x;
                 $(str).removeClass('btn-default');
@@ -50,7 +53,6 @@
                 opt[12]=$("input[type='radio'][name='q13']:checked").val();
                 opt[13]=$("input[type='radio'][name='q14']:checked").val();
                 opt[14]=$("input[type='radio'][name='q15']:checked").val();
-                console.log(opt);
                 socket.emit('submission',{user:{uname:'<%=session.uname%>',roll:'<%=session.roll%>',mail:'<%=session.mail%>',contact:'<%=session.contact%>'},answers:opt});
                 window.location.href = "logout";
             }
@@ -68,6 +70,7 @@
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="#"><%=session.uname%></a></li>
+                        <li><a href="#"><%=session.roll%></a></li>
                     </ul>
                 </div>
             </div>

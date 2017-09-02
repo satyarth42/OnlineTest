@@ -8,6 +8,7 @@ var flash = require('connect-flash');
 var socket_io    = require( 'socket.io' );
 var mongoose = require('mongoose');
 var crypto = require('crypto');
+var expressSession = require('express-session');
 
 mongoose.connect('mongodb://127.0.0.1:27017/quiz');
 var userdata = require('./models/userdata');
@@ -31,6 +32,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(expressSession({secret:'max', saveUninitialized:false, resave:false}))
 
 app.use('/', index);
 app.use('/users', users);
@@ -54,8 +56,14 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
+var admin;
 io.on('connection',function(socket){
-
+    socket.on('admin_connected',function(){
+        admin=socket.id;
+    });
+  socket.on('user_connected',function(data){
+      socket.to(admin).emit('user_connection',data);
+  });
   socket.on('start_test', function () {
       socket.broadcast.emit('startTest');
   });
@@ -64,22 +72,31 @@ io.on('connection',function(socket){
   });
   socket.on('submission',function (data) {
       if(data.user){
-          
+          var score=0;
+          var ans = ['1','1','1','1','1','1','1','1','1','1','1','1','1','1','1'];
+          for(var i=0;i<15;i++)
+          {
+              if(data.answers[i]!=null)
+              {
+                  if(data.answers[i]==ans[i])
+                      score=score+3;
+                  else
+                      score=score-1;
+              }
+          }
           var candidate = new userdata({
               "name":data.user.uname,
               "roll":data.user.roll,
               "contact":data.user.contact,
               "email":data.user.mail,
               "answers":data.answers,
-              "score":0
+              "score":score
           });
           candidate.save(function (err, updated) {
               if (err) console.log(err);
           });
+          socket.to(admin).emit('user_disconnection',data.user);
       }
-  });
-  socket.on('disconnect',function(){
-    console.log("user disconnected");
   });
 });
 
