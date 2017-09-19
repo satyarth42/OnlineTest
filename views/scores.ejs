@@ -1,0 +1,19 @@
+<html>
+    <head>
+        <title><%=title%></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
+    </head>
+    <body>
+    <div class="container">
+        <div id="table">
+            <table class="table table-responsive" id="users">
+                <tr><th>Name</th><th>Roll No.</th><th>Score</th></tr>
+                <% users.forEach(function(item,index){ %>
+                    <tr><td><%=item.name%></td><td><%=item.roll%></td><td><%=item.score%></td></tr>
+                <% }) %>
+            </table>
+        </div>
+    </div>
+    </body>
+</html>

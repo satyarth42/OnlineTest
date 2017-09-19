@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
 var questions = require('../questions.json');
+var mongoose = require('mongoose');
+var use = require('../models/userdata');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -20,7 +22,7 @@ router.post('/register', function (req, res, next) {
 
 router.get('/waiting',function (req,res,next) {
     if(req.session.user)
-        res.render('waiting');
+        res.render('waiting',{session:req.session.user});
     else
         res.render('error');
 });
@@ -35,6 +37,12 @@ router.get('/questions',function (req, res, next) {
         res.render('quiz_main',{title:'Quiz in Progress',session:req.session.user, questions:questions});
     else
         res.render('error');
+});
+
+router.get('/scores',function(req, res, next){
+    use.find({}).sort({score: -1}).exec(function(err, data) {
+        res.render('scores', {users:data,title:"Leaderboard"});
+    });
 });
 
 

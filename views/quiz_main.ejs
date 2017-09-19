@@ -11,9 +11,7 @@
             socket.on("stop_test",function(){
                 submit_ans();
             });
-            $(document).ready(function(){
-                socket.emit('user_connected',{uname:'<%=session.uname%>',roll:'<%=session.roll%>',mail:'<%=session.mail%>',contact:'<%=session.contact%>'});
-            });
+            
             function mark(x) {
                 var str = "#btn"+x;
                 $(str).removeClass('btn-default');
@@ -130,7 +128,8 @@
                 myLoop(--i);
             }
         },1000)
-    })(900);
+    })(300);
+    
 </script>
 </body>
 </html>

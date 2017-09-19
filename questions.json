@@ -1,137 +1,137 @@
 {
   "q1": {
-    "ques": "question 1",
+    "ques": "1.What is the capital of India?",
     "options": [
-      1,
-      2,
-      3,
-      4
+      "Mumbai",
+      "New Delhi",
+      "Kolkata",
+      "Chennai"
     ]
   },
   "q2": {
-    "ques": "question 2",
+    "ques": "2.What is the capital of India?",
     "options": [
-      1,
-      2,
-      3,
-      4
+      "Mumbai",
+      "New Delhi",
+      "Kolkata",
+      "Chennai"
     ]
   },
   "q3": {
-    "ques": "question 3",
+    "ques": "3.What is the capital of India?",
     "options": [
-      1,
-      2,
-      3,
-      4
+      "Mumbai",
+      "New Delhi",
+      "Kolkata",
+      "Chennai"
     ]
   },
   "q4": {
-    "ques": "question 4",
+    "ques": "4.What is the capital of India?",
     "options": [
-      1,
-      2,
-      3,
-      4
+      "Mumbai",
+      "New Delhi",
+      "Kolkata",
+      "Chennai"
     ]
   },
   "q5": {
-    "ques": "question 5",
+    "ques": "5.What is the capital of India?",
     "options": [
-      1,
-      2,
-      3,
-      4
+      "Mumbai",
+      "New Delhi",
+      "Kolkata",
+      "Chennai"
     ]
   },
   "q6": {
-    "ques": "question 6",
+    "ques": "6.What is not the Vice President of IET?",
     "options": [
-      1,
-      2,
-      3,
-      4
+      "Aman Aryan",
+      "Subham Sanghai",
+      "Arnab Das",
+      "Srinithya Nagiri"
     ]
   },
   "q7": {
-    "ques": "question 7",
+    "ques": "7.What is not the Vice President of IET?",
     "options": [
-      1,
-      2,
-      3,
-      4
+      "Aman Aryan",
+      "Subham Sanghai",
+      "Arnab Das",
+      "Srinithya Nagiri"
     ]
   },
   "q8": {
-    "ques": "question 8",
+    "ques": "8.What is not the Vice President of IET?",
     "options": [
-      1,
-      2,
-      3,
-      4
+      "Aman Aryan",
+      "Subham Sanghai",
+      "Arnab Das",
+      "Srinithya Nagiri"
     ]
   },
   "q9": {
-    "ques": "question 9",
+    "ques": "9.What is not the Vice President of IET?",
     "options": [
-      1,
-      2,
-      3,
-      4
+      "Aman Aryan",
+      "Subham Sanghai",
+      "Arnab Das",
+      "Srinithya Nagiri"
     ]
   },
   "q10": {
-    "ques": "question 10",
+    "ques": "10.What is not the Vice President of IET?",
     "options": [
-      1,
-      2,
-      3,
-      4
+      "Aman Aryan",
+      "Subham Sanghai",
+      "Arnab Das",
+      "Srinithya Nagiri"
     ]
   },
   "q11": {
-    "ques": "question 11",
+    "ques": "11.In which club did Neymar Jr. get transferred to?",
     "options": [
-      1,
-      2,
-      3,
-      4
+      "FC Barcelona",
+      "Real Madrid",
+      "Chelsea",
+      "Paris Saint Germain"
     ]
   },
   "q12": {
-    "ques": "question 12",
+    "ques": "12.In which club did Neymar Jr. get transferred to?",
     "options": [
-      1,
-      2,
-      3,
-      4
+      "FC Barcelona",
+      "Real Madrid",
+      "Chelsea",
+      "Paris Saint Germain"
     ]
   },
   "q13": {
-    "ques": "question 13",
+    "ques": "13.In which club did Neymar Jr. get transferred to?",
     "options": [
-      1,
-      2,
-      3,
-      4
+      "FC Barcelona",
+      "Real Madrid",
+      "Chelsea",
+      "Paris Saint Germain"
     ]
   },
   "q14": {
-    "ques": "question 14",
+    "ques": "14.In which club did Neymar Jr. get transferred to?",
     "options": [
-      1,
-      2,
-      3,
-      4
+      "FC Barcelona",
+      "Real Madrid",
+      "Chelsea",
+      "Paris Saint Germain"
     ]
   },
   "q15": {
-    "ques": "question 15",
+    "ques": "15.In which club did Neymar Jr. get transferred to?",
     "options": [
-      1,
-      2,
-      3,
-      4
+      "FC Barcelona",
+      "Real Madrid",
+      "Chelsea",
+      "Paris Saint Germain"
     ]
   }
 }

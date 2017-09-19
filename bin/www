@@ -29,7 +29,7 @@ var server = http.createServer(app);
 var io = app.io
 io.attach( server );
 
-server.listen(port);
+server.listen(port,'192.168.117.85');
 server.on('error', onError);
 server.on('listening', onListening);
 

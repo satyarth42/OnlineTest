@@ -73,7 +73,7 @@ io.on('connection',function(socket){
   socket.on('submission',function (data) {
       if(data.user){
           var score=0;
-          var ans = ['1','1','1','1','1','1','1','1','1','1','1','1','1','1','1'];
+          var ans = ['1','1','1','1','1','2','2','2','2','2','3','3','3','3','3'];
           for(var i=0;i<15;i++)
           {
               if(data.answers[i]!=null)
