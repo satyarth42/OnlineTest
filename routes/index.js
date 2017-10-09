@@ -28,13 +28,16 @@ router.get('/waiting',function (req,res,next) {
 });
 
 router.get('/logout',function (req, res, next) {
-    req.session.destroy();
-    res.render('logout');
+    use.find({roll:req.session.user.roll}).exec(function(err,data){
+        req.session.destroy();
+        res.render('logout',{response:data[0].answers});
+    });
 });
 
 router.get('/questions',function (req, res, next) {
+    var classes = ["panel-primary","panel-info","panel-danger","panel-warning","panel-success"]
     if(req.session.user)
-        res.render('quiz_main',{title:'Quiz in Progress',session:req.session.user, questions:questions});
+        res.render('quiz_main',{title:'Quiz in Progress',session:req.session.user, questions:questions, classes:classes});
     else
         res.render('error');
 });

@@ -10,12 +10,36 @@
             border-width: 10px;
         }
     </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
 </head>
 <body>
+<div class="container">
+    <div id="table" style="width:90%">
+        <table class="table table-responsive" id="responses">
+            <tr>
+                <%for(var i=1;i<=15;i++){%>
+                    <th><%=i%></th>
+                <%}%>
+            </tr>
+            <tr>
+                <%response.forEach(function(item,index){%>
+                    <td>
+                        <%if(item){%>
+                            <%=++item%>
+                        <%}else{%>
+                            <%=item%>
+                        <%}%>
+                    </td>
+                <%})%>
+            </tr>
+        </table>
+    </div>
 <div align="center">
     <div class="success">
         You have successfully logged out!
     </div>
+</div>
 </div>
 </body>
 </html>

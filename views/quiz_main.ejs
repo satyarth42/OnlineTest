@@ -11,7 +11,9 @@
             socket.on("stop_test",function(){
                 submit_ans();
             });
-            
+            $(document).ready(function(){
+                socket.emit('user_connected2',{uname:'<%=session.uname%>',roll:'<%=session.roll%>',mail:'<%=session.mail%>',contact:'<%=session.contact%>'});
+            });
             function mark(x) {
                 var str = "#btn"+x;
                 $(str).removeClass('btn-default');
@@ -62,7 +64,7 @@
         <nav class="navbar navbar-inverse">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="#">Brand</a>
+                    <a class="navbar-brand" href="#">Codec</a>
                 </div>
 
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
@@ -89,7 +91,7 @@
         <div id="ques" class="ques col-md-8 col-sm-8 col-xs-12 col-lg-9" style="float: right">
             <%for (i in questions){%>
                 <a name="a<%=i%>"></a>
-            <div class="panel panel-default">
+            <div class="panel <%=classes[Math.floor(Math.random()*classes.length)]%>">
                 <div class="panel-heading"><%=questions[i.toString()].ques%></div>
                 <div class="panel-body">
                     <div class="form-group">
@@ -116,7 +118,6 @@
     </div>
 </div>
 <script type="text/javascript">
-    console.log('<%=session.contact%>');
     (function myLoop (i) {
         setTimeout(function () {
             $('#clock').html(Math.floor(i/60)+":"+(i%60));
@@ -126,6 +127,9 @@
                 $('#clock').addClass('label-danger');
             if(i>0){
                 myLoop(--i);
+            }
+            if(i==0){
+                submit_ans();
             }
         },1000)
     })(300);

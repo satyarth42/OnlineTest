@@ -64,6 +64,9 @@ io.on('connection',function(socket){
   socket.on('user_connected',function(data){
       socket.to(admin).emit('user_connection',data);
   });
+  socket.on('user_connected2',function(data){
+      socket.to(admin).emit('user_connection2',data);
+  });
   socket.on('start_test', function () {
       socket.broadcast.emit('startTest');
   });
