@@ -24,4 +24,4 @@
   5. from the terminal run command <b>npm start</b>
   6. open your browser and go to address <a href='http://localhost:3000'>localhost:3000</a>
   7. to access Admin control go to <a href='http://localhost:3000/admin'>localhost:3000/admin</a>
-  8. To change the questions open package.json file and modify the questions and options
+  8. To change the questions open questions.json file and modify the questions and options
